@@ -1,8 +1,12 @@
 
-
-
+const Discord = require('discord.js')
+const client = new Discord.Client()
+const fs = require('fs')
 const random = require("random")
 
+let prefix = "!";
+
+//حقوق لاير تيم
 let Layer_XPSYSTEM = JSON.parse(fs.readFileSync("./Layer_XPSYSTEM.json", 'utf8'));
 client.on('message', message => {
   if (!message.channel.guild) return;
@@ -74,6 +78,6 @@ message.channel.send(embed)
   }
 })
 
-
+//layer copyrights
 
 
