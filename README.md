@@ -13,9 +13,9 @@ discord js Level Xpsystem
 
 #مهم
 
--قم بأنشاء ملف مع ملفات البوت بأسم layer_XPSYSTEM.json
+- قم بأنشاء ملف مع ملفات البوت بأسم layer_XPSYSTEM.json
 
--ضع داخله {}
+- ضع داخله {}
 
 - وبس مبروك عليك
 
