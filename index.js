@@ -48,7 +48,7 @@ client.on('message', message => {
 
 
 client.on('message',async message=>{
-  if(message.content.startsWith(prefix+'rnns')){
+  if(message.content.startsWith(prefix+'rank')){
     if(!message.channel.guild) return;
     let member = message.mentions.users.first() || message.author;
     if (!Layer_XPSYSTEM[member.id]) {
