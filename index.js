@@ -3,9 +3,10 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const fs = require('fs')
 const random = require("random")
-
+const canvacord = require("canvacord");
 let prefix = "!";
 
+//حقوق لاير تيم
 //حقوق لاير تيم
 let Layer_XPSYSTEM = JSON.parse(fs.readFileSync("./Layer_XPSYSTEM.json", 'utf8'));
 client.on('message', message => {
@@ -44,8 +45,10 @@ client.on('message', message => {
   }
 
 })
-client.on('message',message=>{
-  if(message.content.startsWith(prefix+'rank')){
+
+
+client.on('message',async message=>{
+  if(message.content.startsWith(prefix+'rnns')){
     if(!message.channel.guild) return;
     let member = message.mentions.users.first() || message.author;
     if (!Layer_XPSYSTEM[member.id]) {
@@ -59,25 +62,21 @@ client.on('message',message=>{
         console.log(err)
       })
     }
-
-let embed = new MessageEmbed()
-
-.setTitle('XP SYSTEM')
-.setAuthor(member.username,member.avatarURL({dynamic:true}))
-.addField('Level',`${Layer_XPSYSTEM[member.id].userLVL}`,true)
-.addField('_ _','_ _',true)
-.addField('Total XP',`${Layer_XPSYSTEM[member.id].userTOTAL}`,true)
-.addField('User XP',`${Layer_XPSYSTEM[member.id].userXP}/${Layer_XPSYSTEM[member.id].reqXP}`,true)
-.addField('_ _','_ _',true)
-.addField('Require XP',`${Layer_XPSYSTEM[member.id].reqXP-Layer_XPSYSTEM[member.id].userXP}`,true)
-
-.setFooter(`Requested by ${message.author.username}`,message.author.avatarURL({dynamic:true}))
-.setURL(message.author.avatarURL({dynamic:true}))
-.setTimestamp()
-message.channel.send(embed)
+const card = new canvacord.Rank()
+.setUsername(member.username)
+.setDiscriminator(member.discriminator)
+.setRank(Layer_XPSYSTEM[member.id].userLVL)
+.setLevel(Layer_XPSYSTEM[member.id].userLVL)
+.setCurrentXP(Layer_XPSYSTEM[member.id].userXP)
+.setRequiredXP(Layer_XPSYSTEM[member.id].reqXP)
+.setStatus(member.presence.status)
+.setAvatar(member.displayAvatarURL({ format: "png", size: 1024 }));
+const img = await card.build();
+return message.channel.send(new MessageAttachment(img, "rank.png"));
   }
 })
 
+//layer copyrights
 //layer copyrights
 
 
