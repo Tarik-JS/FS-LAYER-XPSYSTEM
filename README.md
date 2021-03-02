@@ -11,9 +11,9 @@ discord js Level Xpsystem
 - npm i random | npm i fs
 
 
-#مهم
+# مهم 
 
-- قم بأنشاء ملف مع ملفات البوت بأسم layer_XPSYSTEM.json
+- قم بأنشاء ملف مع ملفات البوت بأسم `layer_XPSYSTEM.json`
 
 - ضع داخله {}
 
