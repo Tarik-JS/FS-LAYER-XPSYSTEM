@@ -2,7 +2,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const fs = require('fs')
-const random = require("random")
 const { MessageAttachment } = require("discord.js");
 const canvacord = require("canvacord");
 let prefix = "!";
@@ -26,7 +25,7 @@ client.on('message', message => {
     })
   }
 
-  let xp = random.int(0,2)
+  let xp = Math.floor(Math.random() * 2);
   Layer_XPSYSTEM[message.author.id].userXP += xp;
   console.log(xp)
   Layer_XPSYSTEM[message.author.id].userTOTAL += xp;
