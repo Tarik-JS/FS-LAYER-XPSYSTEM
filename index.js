@@ -11,7 +11,7 @@ let prefix = "!";
 let Layer_XPSYSTEM = JSON.parse(fs.readFileSync("./Layer_XPSYSTEM.json", 'utf8'));
 client.on('message', message => {
   if (!message.channel.guild) return;
-
+  if(message.author.bot) return;
   if (!Layer_XPSYSTEM[message.author.id]) {
     Layer_XPSYSTEM[message.author.id] = {
       userXP: 0,
@@ -51,6 +51,7 @@ client.on('message',async message=>{
   if(message.content.startsWith(prefix+'rank')){
     if(!message.channel.guild) return;
     let member = message.mentions.users.first() || message.author;
+        if(member.bot) return;
     if (!Layer_XPSYSTEM[member.id]) {
       Layer_XPSYSTEM[member.id] = {
         userXP: 0,
